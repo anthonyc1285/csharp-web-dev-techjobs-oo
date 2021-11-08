@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using TechJobsOO;
 
 namespace TechJobsTests
@@ -32,10 +33,27 @@ namespace TechJobsTests
         [TestMethod]
         public void TestJobsForEquality()
         {
-            Job firstJob = new Job("TDA", new Employer("Google"), new Location("Philly"), new PositionType("Data Analyst"), new CoreCompetency("Multi-tasking")); ;
-            Job secondJob = new Job("TDA", new Employer("Google"), new Location("Philly"), new PositionType("Data Analyst"), new CoreCompetency("Multi-tasking")); ;
+            Job firstJob = new Job("TDA", new Employer("Google"), new Location("Philly"), new PositionType("Data Analyst"), new CoreCompetency("Multi-tasking")); 
+            Job secondJob = new Job("TDA", new Employer("Google"), new Location("Philly"), new PositionType("Data Analyst"), new CoreCompetency("Multi-tasking"));
 
             Assert.AreEqual(firstJob.Id, secondJob.Id);
+        }
+
+        [TestMethod]
+        public void TestToString()
+        {
+
+            Job jobString = new Job(null, new Employer("Google"), new Location("Philly"), new PositionType(null), new CoreCompetency("Multi-tasking"));
+
+            var test = $"\nID: {jobString.Id}\n" +
+                $"Name: Data not available\n" +
+                $"Employer: {jobString.EmployerName.Value}\n" +
+                $"Location: {jobString.EmployerLocation.Value}\n" +
+                $"Position Type: Data not available\n" +
+                $"Core Competency: {jobString.JobCoreCompetency.Value}\n";
+
+            Assert.AreEqual(jobString.ToString(), test);
+            
         }
 
     }

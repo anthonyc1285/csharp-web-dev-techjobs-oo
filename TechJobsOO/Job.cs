@@ -48,5 +48,29 @@ namespace TechJobsOO
         }
 
         // TODO: Generate Equals() and GetHashCode() methods.
+
+        public string CheckNullorEmpty(string value)
+        {
+            if(value == null || value == "")
+            {
+                return "Data not available";
+            }
+            else
+            {
+                return value;
+            }
+
+
+        }
+        public override string ToString()
+        {
+            return $"\nID: {Id}\n"
+                    + $"Name: {CheckNullorEmpty(Name)}\n"
+                    + $"Employer: {CheckNullorEmpty(EmployerName.Value)}\n"
+                    + $"Location: {CheckNullorEmpty(EmployerLocation.Value)}\n"
+                    + $"Position Type: {CheckNullorEmpty(JobType.Value)}\n"
+                    + $"Core Competency: {CheckNullorEmpty(JobCoreCompetency.Value)}\n";
+
+        }
     }
 }
